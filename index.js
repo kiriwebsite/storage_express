@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 // 替換成你 MongoDB Atlas 的連線字串
-mongoose.connect('mongodb+srv://kiriwebsite:YWU5e30XK9hQzDFX@kiri.pxdu7eo.mongodb.net/')
+mongoose.connect('mongodb+srv://kiriwebsite:YWU5e30XK9hQzDFX@kiri.pxdu7eo.mongodb.net/sample_mflix')
     .then(() => console.log('MongoDB connected!'))
     .catch(err => console.error(err));
 
@@ -32,6 +32,7 @@ const Comment = mongoose.model('Comment', commentSchema);
 // API 路由
 app.get('/api/comments', async (req, res) => {
     const comments = await Comment.find().limit(10);
+    // console.log('找到的資料:', comments);
     res.json(comments);
 });
 
